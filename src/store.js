@@ -19,6 +19,7 @@ export const UPDATE_AUTHOR_LAST = 'UPDATE_AUTHOR-LAST'
 export const ADD_INGREDIENTS = "ADD_INGREDIENTS"
 export const ADD_INSTRUCTIONS = 'ADD_INSTRUCTIONS'
 export const ADD_RECIPE = 'ADD_RECIPE'
+export const RESET_STATE = 'REST_STATE'
 
 // REDUCER
 function reducer(state = initialState, action) {
@@ -55,6 +56,8 @@ function reducer(state = initialState, action) {
             }
             const newRecipes = [...state.recipes, recipe]
             return { ...state, recipes: newRecipes }
+        case RESET_STATE:
+            return initialState
         default: return state
     }
 }

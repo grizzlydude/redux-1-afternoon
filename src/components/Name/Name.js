@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Name.css";
-import store, { UPDATE_NAME, UPDATE_CATEGORY } from '../../store'
+import store, { UPDATE_NAME, UPDATE_CATEGORY, RESET_STATE } from '../../store'
 
 class Name extends Component {
   constructor(props) {
@@ -33,6 +33,11 @@ class Name extends Component {
       type: UPDATE_CATEGORY,
       payload: this.state.category
     })
+    store.dispatch({
+      type: RESET_STATE,
+      payload: this.state.reduxState
+    })
+
   }
   render() {
     return (
@@ -64,6 +69,9 @@ class Name extends Component {
           <button onClick={() => this.saveChanges()} className="right_button">
             Next
           </button>
+        </Link>
+        <Link to=''>
+          <button>Previous</button>
         </Link>
       </div>
     );
